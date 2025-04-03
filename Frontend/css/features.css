@@ -152,9 +152,9 @@
     position: relative;
 }
 
-/* .pricing-card.featured {
+.pricing-card.featured {
     border: 2px solid var(--accent-color);
-} */
+}
 
 .featured-tag {
     position: absolute;
