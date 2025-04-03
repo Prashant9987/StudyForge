@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="user-menu">
+                <img src="https://via.placeholder.com/40" class="avatar">
+                <div class="user-dropdown">
+                    <a href="#profile">Profile</a>
+                    <a href="#settings">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1>Welcome back!</h1>
+                <p>Your learning journey continues here...</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-info">
+                        <h3>Study Hours</h3>
+                        <p>69 hrs this week</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3>Active Groups</h3>
+                        <p>50000 groups</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-tasks"></i>
+                    <div class="stat-info">
+                        <h3>Tasks</h3>
+                        <p>12 pending</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <h3>Achievement</h3>
+                        <p>Gold Level</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity & Upcoming Sessions -->
+            <div class="dashboard-grid">
+                <div class="activity-section glass-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Joined Math Study Group</h4>
+                                <p>2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Submitted Physics Assignment</h4>
+                                <p>Yesterday</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Posted in Chemistry Discussion</h4>
+                                <p>2 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sessions-section glass-card">
+                    <h2>Upcoming Sessions</h2>
+                    <div class="session-list">
+                        <div class="session-item">
+                            <div class="session-time">
+                                <h4>10:00 AM</h4>
+                                <p>Today</p>
+                            </div>
+                            <div class="session-details">
+                                <h4>Calculus Study Group</h4>
+                                <p>5 members joining</p>
+                            </div>
+                            <button class="btn btn-primary">Join</button>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-time">
+                                <h4>2:30 PM</h4>
+                                <p>Today</p>
+                            </div>
+                            <div class="session-details">
+                                <h4>Physics Lab Prep</h4>
+                                <p>3 members joining</p>
+                            </div>
+                            <button class="btn btn-primary">Join</button>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-time">
+                                <h4>11:00 AM</h4>
+                                <p>Tomorrow</p>
+                            </div>
+                            <div class="session-details">
+                                <h4>Chemistry Review</h4>
+                                <p>8 members joining</p>
+                            </div>
+                            <button class="btn btn-primary">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

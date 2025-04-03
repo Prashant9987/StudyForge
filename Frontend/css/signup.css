@@ -1,0 +1,146 @@
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #2A2A4E 100%);
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.signup-header {
+    margin-bottom: 2rem;
+}
+
+.signup-header h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.signup-header p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--glass-border);
+}
+
+.input-icon i {
+    color: var(--accent-color);
+    margin-right: 1rem;
+}
+
+.input-icon input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    padding: 0.5rem 0;
+    outline: none;
+}
+
+.input-icon input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.terms {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.terms a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-signup {
+    margin-top: 2rem;
+}
+
+.social-signup p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.social-signup p::before,
+.social-signup p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-signup p::before {
+    left: 0;
+}
+
+.social-signup p::after {
+    right: 0;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.login-link {
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-link a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@media (max-width: 480px) {
+    .signup-card {
+        padding: 2rem;
+    }
+}
