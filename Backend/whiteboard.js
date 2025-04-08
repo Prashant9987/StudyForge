@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineCap = "round";
             ctx.stroke();
         }
-    });
+    }});
+   
 
     canvas.addEventListener("mouseup", () => {
         drawing = false;
