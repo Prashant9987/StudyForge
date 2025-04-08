@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Tool-specific logic
+    // Drawing logic
     canvas.addEventListener("mousedown", (e) => {
         if (currentTool === "pen" || currentTool === "highlighter") {
             drawing = true;
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (drawing && currentTool === "eraser") {
             ctx.clearRect(e.offsetX, e.offsetY, strokeWidth, strokeWidth);
         } else if (drawing && (currentTool === "pen" || currentTool === "highlighter")) {
+        if (drawing) {
             ctx.lineTo(e.offsetX, e.offsetY);
             ctx.strokeStyle = currentTool === "highlighter" ? `${strokeColor}80` : strokeColor;
             ctx.lineWidth = strokeWidth;
@@ -82,16 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     canvas.addEventListener("mouseup", () => {
         drawing = false;
-        if (currentTool === "pen" || currentTool === "highlighter") {
-            ctx.closePath();
-        }
-    });
-
-    // Cursor tool logic (disable drawing)
-    canvas.addEventListener("mousedown", (e) => {
-        if (currentTool === "cursor") {
-            console.log(`Cursor clicked at (${e.offsetX}, ${e.offsetY})`);
-        }
+        ctx.closePath();
     });
 
     // Clear canvas

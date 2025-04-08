@@ -96,3 +96,94 @@
     <script src="../Backend/whiteboard.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Whiteboard - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/whiteboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="session-info">
+                <span class="session-name">Group Study</span>
+                <!-- <span class="participants-count">5 participants</span> -->
+            </div>
+            <div class="user-controls">
+                <button class="btn btn-secondary"><i class="fas fa-microphone"></i></button>
+                <button class="btn btn-secondary"><i class="fas fa-video"></i></button>
+                <!-- <button class="btn btn-primary leave-btn">Leave Session</button> -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="whiteboard-container">
+        <!-- Tools Sidebar -->
+        <div class="toolbar">
+            <div class="tool-group">
+                <button class="tool-btn" data-tool="cursor">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span class="tooltip">Select</span>
+                </button>
+                <button class="tool-btn" data-tool="pen">
+                    <i class="fas fa-pen"></i>
+                    <span class="tooltip">Pen</span>
+                </button>
+                <button class="tool-btn" data-tool="highlighter">
+                    <i class="fas fa-highlighter"></i>
+                    <span class="tooltip">Highlighter</span>
+                </button>
+                <button class="tool-btn" data-tool="eraser">
+                    <i class="fas fa-eraser"></i>
+                    <span class="tooltip">Eraser</span>
+                </button>
+                <button class="tool-btn" data-tool="text">
+                    <i class="fas fa-font"></i>
+                    <span class="tooltip">Text</span>
+                </button>
+                <button class="tool-btn" data-tool="shapes">
+                    <i class="fas fa-shapes"></i>
+                    <span class="tooltip">Shapes</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <input type="color" id="colorPicker" value="#000000">
+                <div class="stroke-width">
+                    <input type="range" min="1" max="20" value="2" id="strokeWidth">
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <button class="tool-btn" data-action="undo">
+                    <i class="fas fa-undo"></i>
+                    <span class="tooltip">Undo</span>
+                </button>
+                <button class="tool-btn" data-action="redo">
+                    <i class="fas fa-redo"></i>
+                    <span class="tooltip">Redo</span>
+                </button>
+                <button class="tool-btn" data-action="clear">
+                    <i class="fas fa-trash"></i>
+                    <span class="tooltip">Clear All</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Whiteboard Area -->
+        <div class="whiteboard-main">
+            <canvas id="whiteboard"></canvas>
+        </div>
+
+        <!-- Removed Participants Sidebar -->
+    </div>
+    <script src="../Backend/whiteboard.js"></script>
+</body>
+</html>
