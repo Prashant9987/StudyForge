@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <!-- Same as profile.html -->
+    </nav>
+
+    <!-- <div class="dashboard-layout"> -->
+        <!-- Sidebar -->
+        <!-- <aside class="sidebar"> -->
+            <!-- Sidebar content -->
+        <!-- </aside> -->
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="settings-container">
+                <h1>Settings</h1>
+
+                <!-- Settings Navigation -->
+                <div class="settings-nav glass-card">
+                    <a href="#account" class="active">Account</a>
+                    <a href="#notifications">Notifications</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#security">Security</a>
+                    <a href="#appearance">Appearance</a>
+                </div>
+
+                <!-- Settings Content -->
+                <div class="settings-content">
+                    <!-- Account Settings -->
+                    <div class="settings-section glass-card" id="account">
+                        <h2>Account Settings</h2>
+                        <form class="settings-form" onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="prashant@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" value="Prashant9987">
+                            </div>
+                            <div class="form-group">
+                                <label>Language</label>
+                                <select>
+                                    <option>English</option>
+                                    <option>Hindi</option>
+                                    <option>French</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="settings-section glass-card" id="notifications">
+                        <h2>Notification Settings</h2>
+                        <div class="notification-preferences">
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h3>Email Notifications</h3>
+                                    <p>Receive updates via email</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h3>Study Reminders</h3>
+                                    <p>Get reminded about upcoming sessions</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h3>Group Updates</h3>
+                                    <p>Notifications about group activities</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Settings -->
+                    <div class="settings-section glass-card" id="privacy">
+                        <h2>Privacy Settings</h2>
+                        <div class="privacy-options">
+                            <div class="privacy-option">
+                                <div class="option-info">
+                                    <h3>Profile Visibility</h3>
+                                    <p>Control who can see your profile</p>
+                                </div>
+                                <select>
+                                    <option>Public</option>
+                                    <option>Friends Only</option>
+                                    <option>Private</option>
+                                </select>
+                            </div>
+                            <div class="privacy-option">
+                                <div class="option-info">
+                                    <h3>Study History</h3>
+                                    <p>Show your study history to others</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="settings-section glass-card" id="security">
+                        <h2>Security Settings</h2>
+                        <div class="security-options">
+                            <div class="security-option">
+                                <h3>Change Password</h3>
+                                <form class="password-form" onsubmit="handleFormSubmit(event)">
+                                    <div class="form-group">
+                                        <label>Current Password</label>
+                                        <input type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm New Password</label>
+                                        <input type="password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                </form>
+                            </div>
+                            <div class="security-option">
+                                <h3>Two-Factor Authentication</h3>
+                                <p>Add an extra layer of security to your account</p>
+                                <button class="btn btn-secondary">Enable 2FA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <!-- </div> -->
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            alert("Changes saved successfully!"); // Optional feedback for the user
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <!-- <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="features.html">Features</a>
+                <a href="contacts.html">Contact</a>
+            </div> -->
+            <div><h3>Profile</h3></div>
+            <div class="user-menu">
+                <img src="images/profile.jpg" alt="User Avatar" class="avatar">
+                <div class="user-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+        <main class="main-content">
+            <div class="profile-container">
+                <!-- Profile Header -->
+                <div class="profile-header glass-card">
+                    <div class="profile-cover">
+                        <button class="edit-cover btn btn-secondary">
+                            <i class="fas fa-camera"></i> Change Cover
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <img src="images/profile.jpg" alt="Profile Picture">
+                            <button class="edit-avatar">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-details">
+                            <h1>Prashant Singh</h1>
+                            <p>Studdent, Computer Science</p>
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-value">120000</span>
+                                    <span class="stat-label">Study Hours</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">69</span>
+                                    <span class="stat-label">Groups</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">250</span>
+                                    <span class="stat-label">Contributions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Personal Information -->
+                    <div class="profile-section glass-card">
+                        <h2>Personal Information</h2>
+                        <form class="profile-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Prashant Singh">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="prashant@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" value="India">
+                            </div>
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea rows="2">Student of Computer Science & passionate about learning and collaboration.</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Academic Information -->
+                    <div class="profile-section glass-card">
+                        <h2>Academic Information</h2>
+                        <form class="profile-form">
+                            <div class="form-group">
+                                <label>Institution</label>
+                                <input type="text" value="Pranveer Singh Institute of Technology">
+                            </div>
+                            <div class="form-group">
+                                <label>Field of Study</label>
+                                <input type="text" value="Computer Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Academic Level</label>
+                                <select>
+                                    <option>Undergraduate</option>
+                                    <option>Graduate</option>
+                                    <option>PhD</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="profile-section glass-card">
+                        <h2>Achievements</h2>
+                        <div class="achievements-grid">
+                            <div class="achievement">
+                                <i class="fas fa-award"></i>
+                                <h3>Study Champion</h3>
+                                <p>100+ study hours</p>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-users"></i>
+                                <h3>Team Player</h3>
+                                <p>Joined 10+ groups</p>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-star"></i>
+                                <h3>Top Contributor</h3>
+                                <p>200+ contributions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>    
+</body>
+</html>
