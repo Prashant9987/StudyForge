@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Groups - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/studygroups.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav >
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="user-menu">
+                <img src="images/profile.jpg" alt="User" class="avatar">
+                <div class="user-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div class="dashboard-layout"> -->
+        <!-- Sidebar -->
+        <!-- <aside class="sidebar"> -->
+            <!-- Include your sidebar content -->
+        <!-- </aside> -->
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="study-groups-container">
+                <!-- Header Section -->
+                <div class="groups-header">
+                    <div class="header-content">
+                        <h1>Study Groups</h1>
+                        <p>Connect, collaborate, and learn together</p>
+                    </div>
+                    <button class="btn btn-primary create-group-btn" id="createGroupBtn">
+                        <i class="fas fa-plus"></i> Create New Group
+                    </button>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section glass-card">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search study groups...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select">
+                            <option value="">All Subjects</option>
+                            <option value="math">Mathematics</option>
+                            <option value="science">Science</option>
+                            <option value="programming">Programming</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="">Sort By</option>
+                            <option value="recent">Most Recent</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="active">Most Active</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Groups Grid -->
+                <div class="groups-grid">
+                    <!-- My Groups Section -->
+                    <div class="groups-section">
+                        <h2>My Groups</h2>
+                        <div class="groups-row">
+                            <!-- Group Card -->
+                            <div class="group-card glass-card">
+                                <div class="group-header">
+                                    <img src="https://via.placeholder.com/300x150" alt="Group Cover">
+                                    <div class="group-status active">Active Now</div>
+                                </div>
+                                <div class="group-content">
+                                    <h3>Advanced Calculus</h3>
+                                    <p>Deep dive into complex mathematical concepts and problem-solving.</p>
+                                    <div class="group-meta">
+                                        <span><i class="fas fa-users"></i> 12 members</span>
+                                        <span><i class="fas fa-clock"></i> Meets Daily</span>
+                                    </div>
+                                    <div class="group-tags">
+                                        <span class="tag">Mathematics</span>
+                                        <span class="tag">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="group-actions">
+                                    <button class="btn btn-primary">Join Session</button>
+                                    <button class="btn btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                            <!-- More group cards... -->
+                        </div>
+                    </div>
+
+                    <!-- Recommended Groups -->
+                    <div class="groups-section">
+                        <h2>Recommended for You</h2>
+                        <div class="groups-row">
+                            <!-- Group Card -->
+                            <div class="group-card glass-card">
+                                <div class="group-header">
+                                    <img src="https://via.placeholder.com/300x150" alt="Group Cover">
+                                </div>
+                                <div class="group-content">
+                                    <h3>Web Development Basics</h3>
+                                    <p>Learn the fundamentals of web development with HTML, CSS, and JavaScript.</p>
+                                    <div class="group-meta">
+                                        <span><i class="fas fa-users"></i> 25 members</span>
+                                        <span><i class="fas fa-clock"></i> Weekly</span>
+                                    </div>
+                                    <div class="group-tags">
+                                        <span class="tag">Programming</span>
+                                        <span class="tag">Beginner</span>
+                                    </div>
+                                </div>
+                                <div class="group-actions">
+                                    <button class="btn btn-primary">Join Group</button>
+                                </div>
+                            </div>
+                            <!-- More group cards... -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <!-- </div> -->
+
+    <!-- Create Group Modal -->
+    <div class="modal" id="createGroupModal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>Create New Study Group</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form class="create-group-form">
+                <div class="form-group">
+                    <label>Group Name</label>
+                    <input type="text" required placeholder="Enter group name">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea required placeholder="Describe your study group"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select required>
+                            <option value="">Select Subject</option>
+                            <option value="math">Mathematics</option>
+                            <option value="science">Science</option>
+                            <option value="programming">Programming</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Level</label>
+                        <select required>
+                            <option value="">Select Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Meeting Schedule</label>
+                    <select required>
+                        <option value="">Select Schedule</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="biweekly">Bi-weekly</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Group Cover Image</label>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelCreate">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
