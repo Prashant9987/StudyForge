@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="user-menu">
+                <img src="https://via.placeholder.com/40" alt="User" class="avatar">
+                <div class="user-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div class="dashboard-layout"> -->
+        <!-- Sidebar -->
+        <!-- <aside class="sidebar"> -->
+            <!-- Include your sidebar content -->
+        <!-- </aside> -->
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="resources-container">
+                <!-- Resources Header -->
+                <div class="resources-header">
+                    <div class="header-content">
+                        <h1>Resources</h1>
+                        <p>Access and manage your study materials</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-upload"></i> Upload
+                        </button>
+                        <button class="btn btn-primary" id="createFolderBtn">
+                            <i class="fas fa-folder-plus"></i> New Folder
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="search-filter-section glass-card">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search resources...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="documents">Documents</option>
+                            <option value="images">Images</option>
+                            <option value="videos">Videos</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="recent">Most Recent</option>
+                            <option value="name">Name</option>
+                            <option value="size">Size</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Resources Content -->
+                <div class="resources-content">
+                    <!-- Quick Access -->
+                    <section class="quick-access glass-card">
+                        <h2>Quick Access</h2>
+                        <div class="quick-access-grid">
+                            <div class="quick-access-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Recent</span>
+                            </div>
+                            <div class="quick-access-item">
+                                <i class="fas fa-star"></i>
+                                <span>Starred</span>
+                            </div>
+                            <div class="quick-access-item">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Shared</span>
+                            </div>
+                            <div class="quick-access-item">
+                                <i class="fas fa-trash"></i>
+                                <span>Trash</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Folders -->
+                    <section class="folders-section glass-card">
+                        <h2>Folders</h2>
+                        <div class="folders-grid">
+                            <div class="folder-card">
+                                <div class="folder-icon">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="folder-info">
+                                    <h3>Cloud Computing</h3>
+                                    <p>15 items</p>
+                                </div>
+                            </div>
+                            <div class="folder-card">
+                                <div class="folder-icon">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="folder-info">
+                                    <h3>Deep Learning</h3>
+                                    <p>8 items</p>
+                                </div>
+                            </div>
+                            <!-- Add more folders -->
+                        </div>
+                    </section>
+
+                    <!-- Recent Files -->
+                    <section class="files-section glass-card">
+                        <h2>Recent Files</h2>
+                        <div class="files-table">
+                            <div class="table-header">
+                                <div class="column">Name</div>
+                                <div class="column">Modified</div>
+                                <div class="column">Size</div>
+                                <div class="column">Actions</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="column file-name">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Calculus Notes.pdf</span>
+                                </div>
+                                <div class="column">Sep 15, 2023</div>
+                                <div class="column">2.5 MB</div>
+                                <div class="column actions">
+                                    <button class="btn-icon"><i class="fas fa-download"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-share"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                </div>
+                            </div>
+                            <!-- Add more file items -->
+                        </div>
+                    </section>
+
+                    <!-- Storage Usage -->
+                    <section class="storage-section glass-card">
+                        <h2>Storage Usage</h2>
+                        <div class="storage-info">
+                            <div class="storage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%"></div>
+                                </div>
+                                <p>6.5 GB of 10 GB used</p>
+                            </div>
+                            <div class="storage-breakdown">
+                                <div class="breakdown-item">
+                                    <div class="color-dot pdf"></div>
+                                    <span>PDF Documents</span>
+                                    <span>2.3 GB</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="color-dot video"></div>
+                                    <span>Video Files</span>
+                                    <span>3.1 GB</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="color-dot other"></div>
+                                    <span>Other Files</span>
+                                    <span>1.1 GB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    <!-- </div> -->
+
+    <!-- Create Folder Modal -->
+    <div class="modal" id="createFolderModal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>Create New Folder</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form class="create-folder-form">
+                <div class="form-group">
+                    <label>Folder Name</label>
+                    <input type="text" required placeholder="Enter folder name">
+                </div>
+                <div class="form-group">
+                    <label>Description (Optional)</label>
+                    <textarea placeholder="Add a description"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelCreate">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Folder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>Upload Files</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="upload-area">
+                <div class="upload-dropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop files here or</p>
+                    <button class="btn btn-secondary">Browse Files</button>
+                </div>
+                <div class="upload-list">
+                    <!-- Upload items will be added here -->
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">Upload Files</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
