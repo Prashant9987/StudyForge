@@ -9,8 +9,283 @@
     <link rel="stylesheet" href="css/progress.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 </head>
 <body>
-    <Progress> </Progress>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="user-menu">
+                <img src="images/profile.jpg" class="avatar">
+                <div class="user-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="study groups.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                </a>
+                <a href="schedule.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="resources.html" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="progress.html" class="menu-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1>Your Progress</h1>
+                <p>Track your learning journey and achievements</p>
+            </div>
+
+            <!-- Progress Overview Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <i class="fas fa-award"></i>
+                    <div class="stat-info">
+                        <h3>Total Points</h3>
+                        <p>2,450 points</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-fire"></i>
+                    <div class="stat-info">
+                        <h3>Current Streak</h3>
+                        <p>15 days</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-info">
+                        <h3>Completed Tasks</h3>
+                        <p>142 tasks</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <i class="fas fa-trophy"></i>
+                    <div class="stat-info">
+                        <h3>Achievements</h3>
+                        <p>18 earned</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Charts & Stats -->
+            <div class="progress-grid">
+                <div class="chart-section glass-card">
+                    <h2>Weekly Study Hours</h2>
+                    <div class="chart-container">
+                        <canvas id="weeklyStudyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-section glass-card">
+                    <h2>Subject Distribution</h2>
+                    <div class="chart-container">
+                        <canvas id="subjectChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Section -->
+            <div class="achievements-section glass-card">
+                <div class="section-header">
+                    <h2>Recent Achievements</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="achievement-info">
+                            <h4>Study Warrior</h4>
+                            <p>Completed 100 study sessions</p>
+                        </div>
+                        <div class="achievement-date">
+                            <span>May 2, 2025</span>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="achievement-info">
+                            <h4>Time Master</h4>
+                            <p>Studied for 50 hours in one week</p>
+                        </div>
+                        <div class="achievement-date">
+                            <span>Apr 28, 2025</span>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="achievement-info">
+                            <h4>Collaboration King</h4>
+                            <p>Participated in 25 study groups</p>
+                        </div>
+                        <div class="achievement-date">
+                            <span>Apr 20, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Progress -->
+            <div class="courses-section glass-card">
+                <div class="section-header">
+                    <h2>Course Progress</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="course-list">
+                    <div class="course-item">
+                        <div class="course-info">
+                            <h4>Machine Learning Fundamentals</h4>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                            <span class="progress-text">85% Complete</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Continue</a>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-info">
+                            <h4>Data Structures and Algorithms</h4>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 62%"></div>
+                            </div>
+                            <span class="progress-text">62% Complete</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Continue</a>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-info">
+                            <h4>Cloud Computing Essentials</h4>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 40%"></div>
+                            </div>
+                            <span class="progress-text">40% Complete</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Weekly Study Hours Chart
+        const weeklyStudyCtx = document.getElementById('weeklyStudyChart').getContext('2d');
+        const weeklyStudyChart = new Chart(weeklyStudyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Hours',
+                    data: [8, 6, 10, 7, 9, 15, 14],
+                    backgroundColor: 'rgba(0, 245, 255, 0.5)',
+                    borderColor: 'rgba(0, 245, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Subject Distribution Chart
+        const subjectCtx = document.getElementById('subjectChart').getContext('2d');
+        const subjectChart = new Chart(subjectCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Machine Learning', 'Data Structures', 'Cloud Computing', 'Web Development', 'Math'],
+                datasets: [{
+                    data: [35, 25, 15, 15, 10],
+                    backgroundColor: [
+                        'rgba(0, 245, 255, 0.8)',
+                        'rgba(52, 152, 219, 0.8)',
+                        'rgba(155, 89, 182, 0.8)',
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(241, 196, 15, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 245, 255, 1)',
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(155, 89, 182, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(241, 196, 15, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: 'rgba(255, 255, 255, 0.7)',
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

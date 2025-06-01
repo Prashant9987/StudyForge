@@ -16,7 +16,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Study<span>Forge</span></a>
             <div class="user-menu">
-                <img src="images/profile.jpg" alt="User" class="avatar">
+                <img src="images/profile.jpg" class="avatar">
                 <div class="user-dropdown">
                     <a href="profile.html">Profile</a>
                     <a href="settings.html">Settings</a>
@@ -27,10 +27,36 @@
     </nav>
 
     <!-- <div class="dashboard-layout"> -->
-        <!-- Sidebar -->
-        <!-- <aside class="sidebar"> -->
-            <!-- Include your sidebar content -->
-        <!-- </aside> -->
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="study groups.html" class="menu-item active">
+                        <i class="fas fa-users"></i>
+                        <span>Study Groups</span>
+                    </a>
+                    <a href="schedule.html" class="menu-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="resources.html" class="menu-item">
+                        <i class="fas fa-book"></i>
+                        <span>Resources</span>
+                    </a>
+                    <a href="progress.html" class="menu-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress</span>
+                    </a>
+                    <a href="settings.html" class="menu-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </aside>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -38,7 +64,7 @@
                 <!-- Header Section -->
                 <div class="groups-header">
                     <div class="header-content">
-                        <h2>Study Groups</h1>
+                        <h1>Study Groups</h1>
                         <p>Connect, collaborate, and learn together</p>
                     </div>
                     <button class="btn btn-primary create-group-btn" id="createGroupBtn">
@@ -138,7 +164,7 @@
                 </div>
             </div>
         </main>
-    <!-- </div> -->
+    </div>
 
     <!-- Create Group Modal -->
     <div class="modal" id="createGroupModal">

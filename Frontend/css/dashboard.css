@@ -30,8 +30,7 @@
     transition: all 0.3s;
 }
 
-.menu-item:hover,
-.menu-item.active {
+.menu-item:hover, .menu-item.active {
     background: rgba(255, 255, 255, 0.1);
     color: var(--accent-color);
 }
@@ -44,7 +43,7 @@
 /* Main Content */
 .main-content {
     padding: 2rem;
-    margin-top:3rem;
+    /* margin-top:3rem; */
 }
 
 .dashboard-header {
