@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Groups - StudyForge</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/studygroups.css">
+    <link rel="stylesheet" href="css/study groups.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
 </head>
 <body>
     <!-- Navigation -->
@@ -16,7 +16,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Study<span>Forge</span></a>
             <div class="user-menu">
-                <img src="images/profile.jpg" class="avatar">
+                <img src="images/profile.jpg" alt="User Avatar" class="avatar">
                 <div class="user-dropdown">
                     <a href="profile.html">Profile</a>
                     <a href="settings.html">Settings</a>
@@ -26,140 +26,233 @@
         </div>
     </nav>
 
-    <!-- <div class="dashboard-layout"> -->
-        <div class="dashboard-layout">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="sidebar-menu">
-                    <a href="dashboard.html" class="menu-item">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="study groups.html" class="menu-item active">
-                        <i class="fas fa-users"></i>
-                        <span>Study Groups</span>
-                    </a>
-                    <a href="schedule.html" class="menu-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Schedule</span>
-                    </a>
-                    <a href="resources.html" class="menu-item">
-                        <i class="fas fa-book"></i>
-                        <span>Resources</span>
-                    </a>
-                    <a href="progress.html" class="menu-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Progress</span>
-                    </a>
-                    <a href="settings.html" class="menu-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
-                </div>
-            </aside>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                </a>
+                <a href="schedule.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="resources.html" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="progress.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="study-groups-container">
-                <!-- Header Section -->
-                <div class="groups-header">
-                    <div class="header-content">
-                        <h1>Study Groups</h1>
-                        <p>Connect, collaborate, and learn together</p>
-                    </div>
-                    <button class="btn btn-primary create-group-btn" id="createGroupBtn">
-                        <i class="fas fa-plus"></i> Create New Group
-                    </button>
-                </div>
+            <div class="page-header">
+                <h1>Study Groups</h1>
+                <button class="btn btn-primary" onclick="openCreateModal()">
+                    <i class="fas fa-plus"></i> Create Group
+                </button>
+            </div>
 
-                <!-- Search and Filter Section -->
-                <div class="search-filter-section glass-card">
-                    <div class="search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search study groups...">
-                    </div>
-                    <div class="filters">
-                        <select class="filter-select">
-                            <option value="">All Subjects</option>
-                            <option value="math">Mathematics</option>
-                            <option value="science">Science</option>
-                            <option value="programming">Programming</option>
-                        </select>
-                        <select class="filter-select">
-                            <option value="">All Levels</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                        </select>
-                        <select class="filter-select">
-                            <option value="">Sort By</option>
-                            <option value="recent">Most Recent</option>
-                            <option value="popular">Most Popular</option>
-                            <option value="active">Most Active</option>
-                        </select>
+            <!-- Search and Filter Bar -->
+            <div class="search-filter-bar glass-card">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search study groups..." id="searchInput">
+                </div>
+                <div class="filter-dropdown">
+                    <div class="dropdown-btn">
+                        <i class="fas fa-filter"></i> Filter
+                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
+                <div class="sort-dropdown">
+                    <div class="dropdown-btn">
+                        <i class="fas fa-sort"></i> Sort
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Groups Grid -->
-                <div class="groups-grid">
-                    <!-- My Groups Section -->
-                    <div class="groups-section">
-                        <h2>My Groups</h2>
-                        <div class="groups-row">
-                            <!-- Group Card -->
-                            <div class="group-card glass-card">
-                                <div class="group-header">
-                                    <img src="https://via.placeholder.com/300x150" alt="Group Cover">
-                                    <div class="group-status active">Active Now</div>
-                                </div>
-                                <div class="group-content">
-                                    <h3>Advanced Calculus</h3>
-                                    <p>Deep dive into complex mathematical concepts and problem-solving.</p>
-                                    <div class="group-meta">
-                                        <span><i class="fas fa-users"></i> 12 members</span>
-                                        <span><i class="fas fa-clock"></i> Meets Daily</span>
-                                    </div>
-                                    <div class="group-tags">
-                                        <span class="tag">Mathematics</span>
-                                        <span class="tag">Advanced</span>
-                                    </div>
-                                </div>
-                                <div class="group-actions">
-                                    <button class="btn btn-primary">Join Session</button>
-                                    <button class="btn btn-secondary">View Details</button>
-                                </div>
-                            </div>
-                            <!-- More group cards... -->
+            <!-- Groups Grid -->
+            <div class="groups-grid" id="groupsGrid">
+                <!-- Machine Learning Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Machine Learning Fundamentals</h3>
+                            <div class="group-subject">Computer Science</div>
+                        </div>
+                        <div class="group-status status-active">Active</div>
+                    </div>
+                    <p class="group-description">
+                        Dive deep into machine learning algorithms, neural networks, and practical implementations. Weekly sessions with hands-on coding exercises.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>59 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Today 10:00 AM</span>
                         </div>
                     </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
 
-                    <!-- Recommended Groups -->
-                    <div class="groups-section">
-                        <h2>Recommended for You</h2>
-                        <div class="groups-row">
-                            <!-- Group Card -->
-                            <div class="group-card glass-card">
-                                <div class="group-header">
-                                    <img src="https://via.placeholder.com/300x150" alt="Group Cover">
-                                </div>
-                                <div class="group-content">
-                                    <h3>Web Development Basics</h3>
-                                    <p>Learn the fundamentals of web development with HTML, CSS, and JavaScript.</p>
-                                    <div class="group-meta">
-                                        <span><i class="fas fa-users"></i> 25 members</span>
-                                        <span><i class="fas fa-clock"></i> Weekly</span>
-                                    </div>
-                                    <div class="group-tags">
-                                        <span class="tag">Programming</span>
-                                        <span class="tag">Beginner</span>
-                                    </div>
-                                </div>
-                                <div class="group-actions">
-                                    <button class="btn btn-primary">Join Group</button>
-                                </div>
-                            </div>
-                            <!-- More group cards... -->
+                <!-- Cloud Computing Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Cloud Computing Mastery</h3>
+                            <div class="group-subject">Information Technology</div>
                         </div>
+                        <div class="group-status status-active">Active</div>
+                    </div>
+                    <p class="group-description">
+                        Master AWS, Azure, and GCP platforms. Learn about microservices, containerization, and cloud architecture patterns.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>46 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Today 2:30 PM</span>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+
+                <!-- Deep Learning Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Deep Learning & AI</h3>
+                            <div class="group-subject">Artificial Intelligence</div>
+                        </div>
+                        <div class="group-status status-scheduled">Scheduled</div>
+                    </div>
+                    <p class="group-description">
+                        Advanced neural networks, transformers, and cutting-edge AI research. Perfect for those with ML foundation.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>81 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Tomorrow 11:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+
+                <!-- Data Structures Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Data Structures & Algorithms</h3>
+                            <div class="group-subject">Computer Science</div>
+                        </div>
+                        <div class="group-status status-active">Active</div>
+                    </div>
+                    <p class="group-description">
+                        Master fundamental data structures and algorithms. Coding interview preparation with practice problems.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>73 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Wed 9:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+
+                <!-- Web Development Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Full-Stack Web Development</h3>
+                            <div class="group-subject">Web Development</div>
+                        </div>
+                        <div class="group-status status-active">Active</div>
+                    </div>
+                    <p class="group-description">
+                        Learn modern web technologies: React, Node.js, databases, and deployment. Build real-world projects together.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>92 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Thu 6:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Group -->
+                <div class="group-card glass-card">
+                    <div class="group-header">
+                        <div class="group-info">
+                            <h3>Cybersecurity Essentials</h3>
+                            <div class="group-subject">Information Security</div>
+                        </div>
+                        <div class="group-status status-active">Active</div>
+                    </div>
+                    <p class="group-description">
+                        Learn ethical hacking, network security, and vulnerability assessment. Hands-on labs with real scenarios.
+                    </p>
+                    <div class="group-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>38 members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Next: Fri 4:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-join">Join Group</button>
+                        <button class="btn-info"><i class="fas fa-info"></i></button>
                     </div>
                 </div>
             </div>
@@ -167,60 +260,127 @@
     </div>
 
     <!-- Create Group Modal -->
-    <div class="modal" id="createGroupModal">
+    <div id="createModal" class="modal">
         <div class="modal-content glass-card">
             <div class="modal-header">
                 <h2>Create New Study Group</h2>
-                <button class="close-modal"><i class="fas fa-times"></i></button>
+                <button class="close-btn" onclick="closeCreateModal()">&times;</button>
             </div>
-            <form class="create-group-form">
+            <form id="createGroupForm">
                 <div class="form-group">
-                    <label>Group Name</label>
-                    <input type="text" required placeholder="Enter group name">
+                    <label for="groupName">Group Name</label>
+                    <input type="text" id="groupName" name="groupName" required>
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
-                    <textarea required placeholder="Describe your study group"></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <select required>
-                            <option value="">Select Subject</option>
-                            <option value="math">Mathematics</option>
-                            <option value="science">Science</option>
-                            <option value="programming">Programming</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Level</label>
-                        <select required>
-                            <option value="">Select Level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Meeting Schedule</label>
-                    <select required>
-                        <option value="">Select Schedule</option>
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="biweekly">Bi-weekly</option>
+                    <label for="groupSubject">Subject</label>
+                    <select id="groupSubject" name="groupSubject" required>
+                        <option value="">Select Subject</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Information Security">Information Security</option>
+                        <option value="Data Science">Data Science</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Group Cover Image</label>
-                    <input type="file" accept="image/*">
+                    <label for="groupDescription">Description</label>
+                    <textarea id="groupDescription" name="groupDescription" placeholder="Describe your study group..." required></textarea>
                 </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelCreate">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Group</button>
+                <div class="form-group">
+                    <label for="meetingTime">Meeting Time</label>
+                    <input type="datetime-local" id="meetingTime" name="meetingTime" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Group</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const groupCards = document.querySelectorAll('.group-card');
+            
+            groupCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const subject = card.querySelector('.group-subject').textContent.toLowerCase();
+                const description = card.querySelector('.group-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || subject.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Modal functions
+        function openCreateModal() {
+            document.getElementById('createModal').style.display = 'block';
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('createModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Form submission
+        document.getElementById('createGroupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const groupData = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            console.log('Creating group:', groupData);
+            
+            // For demo purposes, show success message and close modal
+            alert('Study group created successfully!');
+            closeCreateModal();
+            e.target.reset();
+        });
+
+        // Join group functionality
+        document.querySelectorAll('.btn-join').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const groupCard = e.target.closest('.group-card');
+                const groupName = groupCard.querySelector('h3').textContent;
+                
+                // Here you would typically send join request to backend
+                console.log('Joining group:', groupName);
+                
+                // Visual feedback
+                e.target.textContent = 'Joined!';
+                e.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                e.target.disabled = true;
+                
+                setTimeout(() => {
+                    e.target.textContent = 'View Group';
+                    e.target.style.background = 'linear-gradient(45deg, var(--secondary-color), var(--accent-color))';
+                    e.target.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Info button functionality
+        document.querySelectorAll('.btn-info').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const groupCard = e.target.closest('.group-card');
+                const groupName = groupCard.querySelector('h3').textContent;
+                alert(`More information about ${groupName} will be shown here.`);
+            });
+        });
+    </script>
 </body>
 </html>
