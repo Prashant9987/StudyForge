@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+s<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,19 +66,79 @@
         </div>
     </div>
 
+    <!-- Custom Alert Modal -->
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-modal">
+            <div class="alert-icon" id="alertIcon">
+                <i class="fas fa-check" id="alertIconSymbol"></i>
+            </div>
+            <h3 class="alert-title" id="alertTitle">Success!</h3>
+            <p class="alert-message" id="alertMessage">Account created successfully!</p>
+            <button class="alert-button" id="alertButton" onclick="closeAlert()">Continue</button>
+        </div>
+    </div>
+
     <script>
+        // Custom Alert Functions
+        function showAlert(type, title, message, callback = null) {
+            const overlay = document.getElementById('alertOverlay');
+            const icon = document.getElementById('alertIcon');
+            const iconSymbol = document.getElementById('alertIconSymbol');
+            const alertTitle = document.getElementById('alertTitle');
+            const alertMessage = document.getElementById('alertMessage');
+            const alertButton = document.getElementById('alertButton');
+
+            // Set alert type styling
+            icon.className = `alert-icon ${type}`;
+            alertButton.className = `alert-button ${type}`;
+            
+            // Set content
+            alertTitle.textContent = title;
+            alertMessage.textContent = message;
+
+            // Set icon based on type
+            if (type === 'success') {
+                iconSymbol.className = 'fas fa-check';
+            } else if (type === 'error') {
+                iconSymbol.className = 'fas fa-times';
+            }
+
+            // Store callback for button click
+            window.alertCallback = callback;
+
+            // Show overlay
+            overlay.classList.add('show');
+        }
+
+        function closeAlert() {
+            const overlay = document.getElementById('alertOverlay');
+            overlay.classList.remove('show');
+            
+            // Execute callback if provided
+            if (window.alertCallback) {
+                window.alertCallback();
+                window.alertCallback = null;
+            }
+        }
+
+        // Close alert when clicking outside modal
+        document.getElementById('alertOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAlert();
+            }
+        });
+
+        // Modified Signup Form Handler
         document.getElementById("signupForm").addEventListener("submit", async function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
             
             const fullname = document.getElementById("fullname").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
-            const errorMessage = document.getElementById("error-message");
             
             if (password !== confirmPassword) {
-                errorMessage.textContent = "Passwords do not match!";
-                errorMessage.style.display = "block";
+                showAlert('error', 'Password Mismatch', 'Passwords do not match. Please try again.');
                 return;
             }
             
@@ -96,11 +156,16 @@
                     throw new Error(data.message || "Failed to sign up");
                 }
                 
-                alert("Signup successful! Redirecting to Dashboard...");
-                window.location.href = "dashboard.html";
+                showAlert(
+                    'success',
+                    'Account Created!',
+                    'Your account has been created successfully. Redirecting to dashboard...',
+                    () => {
+                        window.location.href = "dashboard.html";
+                    }
+                );
             } catch (error) {
-                errorMessage.textContent = error.message;
-                errorMessage.style.display = "block";
+                showAlert('error', 'Sign Up Failed', error.message);
             }
         });
     </script>

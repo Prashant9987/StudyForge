@@ -20,8 +20,8 @@
         </div>
     </nav>
 
-    <div class="login-container" style="margin: 5%;">
-        <div class="login-card glass-card">
+    <div class="login-container">
+        <div class="login-card">
             <div class="login-header">
                 <h2>Welcome Back</h2>
                 <p>Enter your credentials to access your account</p>
@@ -46,7 +46,10 @@
                     </label>
                     <a href="#" class="forgot-password">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn btn-primary login-btn">Login</button>
+                <button type="submit" class="btn btn-primary login-btn">
+                    <div class="loading-spinner" id="loadingSpinner"></div>
+                    <span id="loginButtonText">Login</span>
+                </button>
                 <div class="social-login">
                     <p>Or continue with</p>
                     <div class="social-buttons">
@@ -68,36 +71,145 @@
         </div>
     </div>
 
+    <!-- Custom Alert Modal -->
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-modal">
+            <div class="alert-icon" id="alertIcon">
+                <i class="fas fa-check" id="alertIconSymbol"></i>
+            </div>
+            <h3 class="alert-title" id="alertTitle">Success!</h3>
+            <p class="alert-message" id="alertMessage">Login successful! Redirecting to dashboard...</p>
+            <button class="alert-button" id="alertButton" onclick="closeAlert()">Continue</button>
+        </div>
+    </div>
+
     <script>
-document.querySelector(".login-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
+        // Custom Alert Functions
+        function showAlert(type, title, message, callback = null) {
+            const overlay = document.getElementById('alertOverlay');
+            const icon = document.getElementById('alertIcon');
+            const iconSymbol = document.getElementById('alertIconSymbol');
+            const alertTitle = document.getElementById('alertTitle');
+            const alertMessage = document.getElementById('alertMessage');
+            const alertButton = document.getElementById('alertButton');
 
-    const email = document.querySelector('input[type="email"]').value;
-    const password = document.querySelector('input[type="password"]').value;
+            // Set alert type styling
+            icon.className = `alert-icon ${type}`;
+            alertButton.className = `alert-button ${type}`;
+            
+            // Set content
+            alertTitle.textContent = title;
+            alertMessage.textContent = message;
 
-    try {
-        const response = await fetch("https://studyforge-4vp8.onrender.com/api/user/login", {
-            method: "POST",
-            credentials: "include", // Allows cookies to be sent
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
+            // Set icon based on type
+            if (type === 'success') {
+                iconSymbol.className = 'fas fa-check';
+            } else if (type === 'error') {
+                iconSymbol.className = 'fas fa-times';
+            }
+
+            // Store callback for button click
+            window.alertCallback = callback;
+
+            // Show overlay
+            overlay.classList.add('show');
+        }
+
+        function closeAlert() {
+            const overlay = document.getElementById('alertOverlay');
+            overlay.classList.remove('show');
+            
+            // Execute callback if provided
+            if (window.alertCallback) {
+                window.alertCallback();
+                window.alertCallback = null;
+            }
+        }
+
+        // Close alert when clicking outside modal
+        document.getElementById('alertOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAlert();
+            }
         });
 
-        const data = await response.json();
+        // Login Form Handler
+        document.querySelector(".login-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-        if (response.ok) {
-            alert("Login successful!");
-            window.location.href = "dashboard.html"; // Redirect after login
-        } else {
-            alert(data.message || "Login failed");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong");
-    }
-});
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const loginButton = document.querySelector('.login-btn');
+            const spinner = document.getElementById('loadingSpinner');
+            const buttonText = document.getElementById('loginButtonText');
+
+            // Show loading state
+            spinner.style.display = 'inline-block';
+            buttonText.textContent = 'Signing in...';
+            loginButton.disabled = true;
+
+            try {
+                const response = await fetch("https://studyforge-4vp8.onrender.com/api/user/login", {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                // Hide loading state
+                spinner.style.display = 'none';
+                buttonText.textContent = 'Login';
+                loginButton.disabled = false;
+
+                if (response.ok) {
+                    showAlert(
+                        'success',
+                        'Login Successful!',
+                        'Welcome back! Redirecting you to your dashboard...',
+                        () => {
+                            window.location.href = "dashboard.html";
+                        }
+                    );
+                } else {
+                    showAlert(
+                        'error',
+                        'Login Failed',
+                        data.message || 'Invalid credentials. Please check your email and password.'
+                    );
+                }
+            } catch (error) {
+                // Hide loading state
+                spinner.style.display = 'none';
+                buttonText.textContent = 'Login';
+                loginButton.disabled = false;
+
+                console.error("Error:", error);
+                showAlert(
+                    'error',
+                    'Connection Error',
+                    'Unable to connect to the server. Please check your internet connection and try again.'
+                );
+            }
+        });
+
+        // Social button handlers (placeholder)
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const provider = this.classList.contains('google') ? 'Google' : 
+                               this.classList.contains('github') ? 'GitHub' : 'LinkedIn';
+                
+                showAlert(
+                    'error',
+                    'Feature Coming Soon',
+                    `${provider} login is not available yet. Please use email login for now.`
+                );
+            });
+        });
     </script>
 </body>
 </html>
