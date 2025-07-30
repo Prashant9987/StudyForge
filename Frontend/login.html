@@ -92,8 +92,9 @@ document.querySelector(".login-form").addEventListener("submit", async function 
         alert("Login successful!");
         window.location.href = "dashboard.html"; // Redirect after login
     } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong");
+        console.error('Login Error:', error);
+        errorMessage.textContent = error.message;
+        errorMessage.style.display = "block";
     }
 });
     </script>
