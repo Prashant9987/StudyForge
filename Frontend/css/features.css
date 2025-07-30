@@ -124,7 +124,9 @@
 .demo-video {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
 }
 
 .interactive-demo {
