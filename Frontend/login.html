@@ -78,21 +78,19 @@ document.querySelector(".login-form").addEventListener("submit", async function 
     try {
         const response = await fetch("https://studyforge-4vp8.onrender.com/api/user/login", {
             method: "POST",
-            credentials: "include", // Allows cookies to be sent
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email, password }),
+            credentials: 'include',  // Allows cookies to be sent
+            body: JSON.stringify({ email, password })
         });
-
+        
         const data = await response.json();
-
-        if (response.ok) {
-            alert("Login successful!");
-            window.location.href = "dashboard.html"; // Redirect after login
-        } else {
-            alert(data.message || "Login failed");
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to login");
         }
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Redirect after login
     } catch (error) {
         console.error("Error:", error);
         alert("Something went wrong");
