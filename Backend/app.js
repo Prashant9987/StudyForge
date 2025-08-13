@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8000;
 
 
 app.use(cors({
-    origin: "http://127.0.0.1:5501",
+    origin: "https://study-forge-puce.vercel.app/",
     credentials: true, // Allow cookies & authentication headers
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
