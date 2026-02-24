@@ -11,6 +11,7 @@
     
 </head>
 <body>
+    <div id="notification" style="display:none;position:fixed;top:90px;right:30px;z-index:3000;min-width:220px;padding:1rem 2rem;background:linear-gradient(45deg,#3498DB,#00F5FF);color:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.3);font-weight:600;font-size:1.1rem;transition:opacity 0.3s;"></div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -88,173 +89,7 @@
 
             <!-- Groups Grid -->
             <div class="groups-grid" id="groupsGrid">
-                <!-- Machine Learning Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Machine Learning Fundamentals</h3>
-                            <div class="group-subject">Computer Science</div>
-                        </div>
-                        <div class="group-status status-active">Active</div>
-                    </div>
-                    <p class="group-description">
-                        Dive deep into machine learning algorithms, neural networks, and practical implementations. Weekly sessions with hands-on coding exercises.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>59 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Today 10:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
-
-                <!-- Cloud Computing Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Cloud Computing Mastery</h3>
-                            <div class="group-subject">Information Technology</div>
-                        </div>
-                        <div class="group-status status-active">Active</div>
-                    </div>
-                    <p class="group-description">
-                        Master AWS, Azure, and GCP platforms. Learn about microservices, containerization, and cloud architecture patterns.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>46 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Today 2:30 PM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
-
-                <!-- Deep Learning Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Deep Learning & AI</h3>
-                            <div class="group-subject">Artificial Intelligence</div>
-                        </div>
-                        <div class="group-status status-scheduled">Scheduled</div>
-                    </div>
-                    <p class="group-description">
-                        Advanced neural networks, transformers, and cutting-edge AI research. Perfect for those with ML foundation.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>81 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Tomorrow 11:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
-
-                <!-- Data Structures Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Data Structures & Algorithms</h3>
-                            <div class="group-subject">Computer Science</div>
-                        </div>
-                        <div class="group-status status-active">Active</div>
-                    </div>
-                    <p class="group-description">
-                        Master fundamental data structures and algorithms. Coding interview preparation with practice problems.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>73 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Wed 9:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
-
-                <!-- Web Development Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Full-Stack Web Development</h3>
-                            <div class="group-subject">Web Development</div>
-                        </div>
-                        <div class="group-status status-active">Active</div>
-                    </div>
-                    <p class="group-description">
-                        Learn modern web technologies: React, Node.js, databases, and deployment. Build real-world projects together.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>92 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Thu 6:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
-
-                <!-- Cybersecurity Group -->
-                <div class="group-card glass-card">
-                    <div class="group-header">
-                        <div class="group-info">
-                            <h3>Cybersecurity Essentials</h3>
-                            <div class="group-subject">Information Security</div>
-                        </div>
-                        <div class="group-status status-active">Active</div>
-                    </div>
-                    <p class="group-description">
-                        Learn ethical hacking, network security, and vulnerability assessment. Hands-on labs with real scenarios.
-                    </p>
-                    <div class="group-stats">
-                        <div class="stat">
-                            <i class="fas fa-users"></i>
-                            <span>38 members</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Next: Fri 4:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="group-actions">
-                        <button class="btn-join">Join Group</button>
-                        <button class="btn-info"><i class="fas fa-info"></i></button>
-                    </div>
-                </div>
+                <!-- Groups will be rendered here dynamically -->
             </div>
         </main>
     </div>
@@ -299,23 +134,17 @@
     </div>
 
     <script>
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const groupCards = document.querySelectorAll('.group-card');
-            
-            groupCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const subject = card.querySelector('.group-subject').textContent.toLowerCase();
-                const description = card.querySelector('.group-description').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || subject.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+        // Notification UI
+        function showNotification(message) {
+            const notif = document.getElementById('notification');
+            notif.textContent = message;
+            notif.style.display = 'block';
+            notif.style.opacity = '1';
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                setTimeout(() => notif.style.display = 'none', 400);
+            }, 2000);
+        }
 
         // Modal functions
         function openCreateModal() {
@@ -334,52 +163,163 @@
             }
         }
 
-        // Form submission
-        document.getElementById('createGroupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Fetch and render groups
+        const API_BASE_URL = 'http://localhost:8000/api';
+        
+        async function fetchAndRenderGroups() {
+            const grid = document.getElementById('groupsGrid');
+            grid.innerHTML = '<div style="color:#fff;">Loading groups...</div>';
+            try {
+                const res = await fetch(`${API_BASE_URL}/study-groups/all`, { 
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.message || 'Failed to fetch groups');
+                if (!data.data || !Array.isArray(data.data) || data.data.length === 0) {
+                    grid.innerHTML = '<div style="color:#fff;">No groups found.</div>';
+                    return;
+                }
+                grid.innerHTML = '';
+                data.data.forEach(group => {
+                    const card = document.createElement('div');
+                    card.className = 'group-card glass-card';
+                    card.dataset.groupId = group._id;
+                    card.innerHTML = `
+                        <div class="group-header">
+                            <div class="group-info">
+                                <h3>${group.groupName}</h3>
+                                <div class="group-subject">${group.subject}</div>
+                            </div>
+                            <div class="group-status status-${group.status || 'active'}">${group.status ? group.status.charAt(0).toUpperCase() + group.status.slice(1) : 'Active'}</div>
+                        </div>
+                        <p class="group-description">${group.description}</p>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>${group.members ? group.members.length : 1} members</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Next: ${group.meetingTime ? new Date(group.meetingTime).toLocaleString() : 'N/A'}</span>
+                            </div>
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn-join">Join Group</button>
+                            <button class="btn-info"><i class="fas fa-info"></i></button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                attachGroupActionListeners();
+            } catch (err) {
+                grid.innerHTML = `<div style='color:#fff;'>${err.message}</div>`;
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const groupCards = document.querySelectorAll('.group-card');
             
-            // Get form data
+            groupCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const subject = card.querySelector('.group-subject').textContent.toLowerCase();
+                const description = card.querySelector('.group-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || subject.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Attach listeners to join/info buttons after rendering
+        function attachGroupActionListeners() {
+            document.querySelectorAll('.btn-join').forEach(btn => {
+                btn.addEventListener('click', async function(e) {
+                    const groupCard = e.target.closest('.group-card');
+                    const groupId = groupCard.dataset.groupId;
+                    try {
+                        const response = await fetch(`http://localhost:8000/api/study-groups/join/${groupId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            credentials: 'include'
+                        });
+                        const data = await response.json();
+                        if (response.ok) {
+                            e.target.textContent = 'Joined!';
+                            e.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                            e.target.disabled = true;
+                            showNotification('Joined group successfully!');
+                            setTimeout(() => {
+                                e.target.textContent = 'View Group';
+                                e.target.style.background = 'linear-gradient(45deg, var(--secondary-color), var(--accent-color))';
+                                e.target.disabled = false;
+                            }, 2000);
+                        } else {
+                            showNotification(data.message || 'Failed to join group');
+                        }
+                    } catch (error) {
+                        showNotification('Failed to join group');
+                    }
+                });
+            });
+            document.querySelectorAll('.btn-info').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const groupCard = e.target.closest('.group-card');
+                    const groupName = groupCard.querySelector('h3').textContent;
+                    showNotification(`More information about ${groupName} will be shown here.`);
+                });
+            });
+        }
+
+        // On page load, fetch groups
+        fetchAndRenderGroups();
+
+        // Form submission
+        document.getElementById('createGroupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             const formData = new FormData(e.target);
             const groupData = Object.fromEntries(formData);
             
-            // Here you would typically send the data to your backend
-            console.log('Creating group:', groupData);
-            
-            // For demo purposes, show success message and close modal
-            alert('Study group created successfully!');
-            closeCreateModal();
-            e.target.reset();
-        });
+            try {
+                // Check if backend is accessible
+                try {
+                    await fetch(API_BASE_URL, { method: 'HEAD' });
+                } catch (error) {
+                    throw new Error('Backend server is not running. Please start the server and try again.');
+                }
 
-        // Join group functionality
-        document.querySelectorAll('.btn-join').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const groupCard = e.target.closest('.group-card');
-                const groupName = groupCard.querySelector('h3').textContent;
-                
-                // Here you would typically send join request to backend
-                console.log('Joining group:', groupName);
-                
-                // Visual feedback
-                e.target.textContent = 'Joined!';
-                e.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
-                e.target.disabled = true;
-                
-                setTimeout(() => {
-                    e.target.textContent = 'View Group';
-                    e.target.style.background = 'linear-gradient(45deg, var(--secondary-color), var(--accent-color))';
-                    e.target.disabled = false;
-                }, 2000);
-            });
-        });
-
-        // Info button functionality
-        document.querySelectorAll('.btn-info').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const groupCard = e.target.closest('.group-card');
-                const groupName = groupCard.querySelector('h3').textContent;
-                alert(`More information about ${groupName} will be shown here.`);
-            });
+                const response = await fetch(`${API_BASE_URL}/study-groups/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify(groupData),
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    showNotification('Study group created successfully!');
+                    closeCreateModal();
+                    e.target.reset();
+                    fetchAndRenderGroups();
+                } else {
+                    showNotification(data.message || 'Failed to create study group');
+                }
+            } catch (error) {
+                showNotification('Failed to create study group');
+            }
         });
     </script>
 </body>

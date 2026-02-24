@@ -7,10 +7,10 @@ const PORT = process.env.PORT || 8000;
 
 
 app.use(cors({
-    origin: "https://study-forge-puce.vercel.app",
-    credentials: true, // Allow cookies & authentication headers
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+    origin: 'http://127.0.0.1:5500', // Update this to match your frontend URL
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
   
   app.use(express.json({ limit: "20kb" }));
@@ -28,12 +28,15 @@ app.get('/about', (req, res) => {
 });
 
 import userRoutes from './routes/user.routes.js';
+import studyGroupRoutes from './routes/studyGroup.routes.js';
+
 app.use("/api/user", userRoutes);
+app.use("/api/study-groups", studyGroupRoutes);
 
 // Start the server
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 export {app};
 
