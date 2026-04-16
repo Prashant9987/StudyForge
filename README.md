@@ -1,4 +1,4 @@
-# StudyForge
+# StudyForge-A Collaborative Study Platform
 
 > **A Collaborative Learning Platform**
 
