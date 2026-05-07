@@ -20,15 +20,15 @@ const studyGroupSchema = new mongoose.Schema({
         type: Date,
         required: [true, "Meeting time is required"]
     },
-    // members: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User"
-    // }],
-    // creator: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //     required: true
-    // },
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: false
+    },
     status: {
         type: String,
         enum: ["active", "scheduled", "completed"],

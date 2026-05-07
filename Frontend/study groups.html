@@ -164,7 +164,14 @@
         }
 
         // Fetch and render groups
-        const API_BASE_URL = 'http://localhost:8000/api';
+        const API_BASE_URL = 'http://localhost:8080/api';
+        
+        // Retrieve logged-in user ID from localStorage
+        function initializeUserId() {
+            return localStorage.getItem('userId') || null;
+        }
+
+        const currentUserId = initializeUserId();
         
         async function fetchAndRenderGroups() {
             const grid = document.getElementById('groupsGrid');
@@ -189,19 +196,23 @@
                     const card = document.createElement('div');
                     card.className = 'group-card glass-card';
                     card.dataset.groupId = group._id;
+                    
+                    // Check membership using logged-in user ID only
+                    const isMember = currentUserId && group.members?.some(m => m._id?.toString() === currentUserId.toString());
+                    
                     card.innerHTML = `
                         <div class="group-header">
                             <div class="group-info">
                                 <h3>${group.groupName}</h3>
                                 <div class="group-subject">${group.subject}</div>
                             </div>
-                            <div class="group-status status-${group.status || 'active'}">${group.status ? group.status.charAt(0).toUpperCase() + group.status.slice(1) : 'Active'}</div>
+                            <div class="group-status status-${isMember ? 'active' : 'inactive'}" style="background: ${isMember ? 'linear-gradient(45deg, #27ae60, #2ecc71)' : 'linear-gradient(45deg, #95a5a6, #bdc3c7)'}; color: white;">${isMember ? 'Active' : 'Inactive'}</div>
                         </div>
                         <p class="group-description">${group.description}</p>
                         <div class="group-stats">
                             <div class="stat">
                                 <i class="fas fa-users"></i>
-                                <span>${group.members ? group.members.length : 1} members</span>
+                                <span>${group.members ? group.members.length : 0} members</span>
                             </div>
                             <div class="stat">
                                 <i class="fas fa-clock"></i>
@@ -209,10 +220,12 @@
                             </div>
                         </div>
                         <div class="group-actions">
-                            <button class="btn-join">Join Group</button>
+                            <button class="btn-join">${isMember ? 'Joined' : 'Join Group'}</button>
+                            <button class="btn-delete" style="background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-trash"></i></button>
                             <button class="btn-info"><i class="fas fa-info"></i></button>
                         </div>
                     `;
+                    card.dataset.isMember = isMember ? 'true' : 'false';
                     grid.appendChild(card);
                 });
                 attachGroupActionListeners();
@@ -245,8 +258,22 @@
                 btn.addEventListener('click', async function(e) {
                     const groupCard = e.target.closest('.group-card');
                     const groupId = groupCard.dataset.groupId;
+                    const isMember = groupCard.dataset.isMember === 'true';
+                    
+                    if (!groupId) {
+                        showNotification('Error: Unable to load group');
+                        return;
+                    }
+                    
+                    // If already a member, just navigate
+                    if (isMember) {
+                        window.location.href = `group-details.html?groupId=${groupId}`;
+                        return;
+                    }
+                    
+                    // Join the group first
                     try {
-                        const response = await fetch(`http://localhost:8000/api/study-groups/join/${groupId}`, {
+                        const response = await fetch(`http://localhost:8080/api/study-groups/${groupId}/join`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -254,22 +281,67 @@
                             },
                             credentials: 'include'
                         });
+                        
                         const data = await response.json();
                         if (response.ok) {
-                            e.target.textContent = 'Joined!';
-                            e.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                            groupCard.dataset.isMember = 'true';
+                            // Update button and status
+                            e.target.textContent = 'Joined';
+                            e.target.style.background = 'linear-gradient(45deg, #27ae60, #2ecc71)';
                             e.target.disabled = true;
-                            showNotification('Joined group successfully!');
+                            
+                            // Update status badge
+                            const statusBadge = groupCard.querySelector('.group-status');
+                            statusBadge.textContent = 'Active';
+                            statusBadge.style.background = 'linear-gradient(45deg, #27ae60, #2ecc71)';
+                            
+                            // Update members count
+                            const stat = groupCard.querySelector('.stat:first-child span');
+                            const currentText = stat.textContent || '0 members';
+                            const currentCount = parseInt(currentText, 10) || 0;
+                            stat.textContent = (currentCount + 1) + ' members';
+                            
+                            showNotification('Successfully joined the group!');
+                            
+                            // Navigate to group details after a short delay
                             setTimeout(() => {
-                                e.target.textContent = 'View Group';
-                                e.target.style.background = 'linear-gradient(45deg, var(--secondary-color), var(--accent-color))';
-                                e.target.disabled = false;
-                            }, 2000);
+                                window.location.href = `group-details.html?groupId=${groupId}`;
+                            }, 500);
                         } else {
                             showNotification(data.message || 'Failed to join group');
                         }
                     } catch (error) {
-                        showNotification('Failed to join group');
+                        showNotification('Failed to join group: ' + error.message);
+                    }
+                });
+            });
+            document.querySelectorAll('.btn-delete').forEach(btn => {
+                btn.addEventListener('click', async function(e) {
+                    const groupCard = e.target.closest('.group-card');
+                    const groupId = groupCard.dataset.groupId;
+                    const groupName = groupCard.querySelector('h3').textContent;
+                    
+                    if (confirm(`Are you sure you want to delete "${groupName}"?`)) {
+                        try {
+                            const response = await fetch(`http://localhost:8080/api/study-groups/${groupId}/delete`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                                },
+                                credentials: 'include'
+                            });
+                            const data = await response.json();
+                            if (response.ok) {
+                                showNotification('Group deleted successfully!');
+                                groupCard.style.opacity = '0';
+                                setTimeout(() => groupCard.remove(), 300);
+                            } else {
+                                showNotification(data.message || 'Failed to delete group');
+                            }
+                        } catch (error) {
+                            showNotification('Failed to delete group');
+                        }
                     }
                 });
             });

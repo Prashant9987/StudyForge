@@ -68,13 +68,13 @@ router.route("/login").post(async (req, res) => {
 
   //for security purpose of our cookies we set some options so that the cookies can only be modified from the server side and not from the frontend
   const options = {
-    secure: true,
+    secure: false,
     sameSite: "None",
     httpOnly: true,
   };
   //new database call so that all the updated information can come in the new user
   const updatedloggedinUser = await User.findById(currentUser._id).select(
-    "-password -refreshTokens"
+    "-password -refreshToken"
   );
   console.log(updatedloggedinUser);
   res
@@ -83,7 +83,7 @@ router.route("/login").post(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, updatedloggedinUser, "Logged In SuccessFully"));
+    .json(new ApiResponse(200, { user: updatedloggedinUser, accessToken, refreshToken }, "Logged In SuccessFully"));
 });
 
 

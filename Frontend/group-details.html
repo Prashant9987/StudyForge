@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Details - StudyForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/study groups.css">
+    <link rel="stylesheet" href="css/group-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <style>
+        
+    </style> -->
+</head>
+<body>
+    <div id="notification" style="display:none;position:fixed;top:90px;right:30px;z-index:3000;min-width:220px;padding:1rem 2rem;background:linear-gradient(45deg,#3498DB,#00F5FF);color:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.3);font-weight:600;font-size:1.1rem;transition:opacity 0.3s;"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Study<span>Forge</span></a>
+            <div class="user-menu">
+                <img src="images/profile.jpg" alt="User Avatar" class="avatar">
+                <div class="user-dropdown">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="study groups.html" class="menu-item active">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                </a>
+                <a href="schedule.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="resources.html" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="progress.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <a href="study groups.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Groups
+            </a>
+
+            <div class="group-detail-container">
+                <div class="group-detail-main">
+                    <!-- Group Header -->
+                    <div class="group-header-detail">
+                        <div class="group-subject-badge" id="groupSubject">Loading...</div>
+                        <h1 id="groupName">Loading Group Details...</h1>
+                        <p class="group-description-detail" id="groupDescription">Loading description...</p>
+                        <div class="group-meta-info">
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span><strong id="memberCount">0</strong> members</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Next: <strong id="meetingTime">N/A</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Created: <strong id="createdDate">N/A</strong></span>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-join-now" id="joinBtn" style="display: none;">
+                                <i class="fas fa-plus"></i> Join Group
+                            </button>
+                            <button class="btn-action btn-leave" id="leaveBtn" style="display: none;">
+                                <i class="fas fa-exit"></i> Leave Group
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Section -->
+                    <div class="content-section">
+                        <h2><i class="fas fa-comments"></i> Group Discussion</h2>
+                        <div class="chat-area">
+                            <div class="messages-container" id="messagesContainer">
+                                <div class="empty-state">
+                                    <i class="fas fa-comment-slash" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                                    <p>No messages yet. Start the conversation!</p>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="messageInput" placeholder="Type a message...">
+                                <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resources Section -->
+                    <div class="content-section">
+                        <h2><i class="fas fa-book"></i> Group Resources</h2>
+                        <div class="resources-list" id="resourcesList">
+                            <div class="resource-item">
+                                <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="resource-name">Study Material 1</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon"><i class="fas fa-link"></i></div>
+                                <div class="resource-name">Useful Link</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon"><i class="fas fa-video"></i></div>
+                                <div class="resource-name">Tutorial Video</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar-detail">
+                    <!-- Members -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-users"></i> Members</h3>
+                        <div id="membersList" style="max-height: 400px; overflow-y: auto;">
+                            <div class="empty-state">
+                                <p>Loading members...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group Stats -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-chart-pie"></i> Group Stats</h3>
+                        <ul>
+                            <li>
+                                <span>Total Members</span>
+                                <strong id="statMembers">0</strong>
+                            </li>
+                            <li>
+                                <span>Group Status</span>
+                                <strong id="statStatus">Active</strong>
+                            </li>
+                            <li>
+                                <span>Messages</span>
+                                <strong id="statMessages">0</strong>
+                            </li>
+                            <li>
+                                <span>Resources</span>
+                                <strong id="statResources">3</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8080/api';
+        let currentGroupId = null;
+        let isMember = false;
+
+        // Get group ID from URL params
+        function getGroupId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('groupId');
+        }
+
+        // Initialize logged-in user ID
+        function initializeUserId() {
+            return localStorage.getItem('userId') || null;
+        }
+
+        const currentUserId = initializeUserId();
+
+        // Show notification
+        function showNotification(message) {
+            const notif = document.getElementById('notification');
+            notif.textContent = message;
+            notif.style.display = 'block';
+            notif.style.opacity = '1';
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                setTimeout(() => notif.style.display = 'none', 400);
+            }, 2000);
+        }
+
+        // Load group details
+        async function loadGroupDetails() {
+            currentGroupId = getGroupId();
+            if (!currentGroupId) {
+                window.location.href = 'study groups.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/study-groups/${currentGroupId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    credentials: 'include'
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch group details');
+
+                const data = await response.json();
+                const group = data.data;
+
+                // Update header
+                document.getElementById('groupName').textContent = group.groupName;
+                document.getElementById('groupSubject').textContent = group.subject;
+                document.getElementById('groupDescription').textContent = group.description;
+                document.getElementById('memberCount').textContent = group.members?.length || 0;
+                document.getElementById('meetingTime').textContent = new Date(group.meetingTime).toLocaleString();
+                document.getElementById('createdDate').textContent = new Date(group.createdAt).toLocaleDateString();
+                document.getElementById('statMembers').textContent = group.members?.length || 0;
+                document.getElementById('statStatus').textContent = group.status || 'Active';
+
+                // Load members
+                loadMembers(group.members || []);
+
+                // Check if user is member based on logged-in user ID
+                isMember = currentUserId && group.members?.some(member => member._id?.toString() === currentUserId.toString());
+                updateJoinLeaveButtons();
+
+            } catch (error) {
+                showNotification(error.message);
+            }
+        }
+
+        // Load members list
+        function loadMembers(members) {
+            const membersList = document.getElementById('membersList');
+            if (!members || members.length === 0) {
+                membersList.innerHTML = '<div class="empty-state"><p>No members yet</p></div>';
+                return;
+            }
+
+            membersList.innerHTML = members.map((member, index) => `
+                <div class="member-item">
+                    <div class="member-avatar">${member.fullname?.charAt(0).toUpperCase() || 'U'}</div>
+                    <div class="member-info">
+                        <div class="member-name">${member.fullname || 'Unknown User'}</div>
+                        <div class="member-email">${member.email || 'N/A'}</div>
+                    </div>
+                    ${index === 0 ? '<div class="member-badge">Creator</div>' : ''}
+                </div>
+            `).join('');
+        }
+
+        // Update join/leave buttons
+        function updateJoinLeaveButtons() {
+            const joinBtn = document.getElementById('joinBtn');
+            const leaveBtn = document.getElementById('leaveBtn');
+
+            if (isMember) {
+                joinBtn.style.display = 'none';
+                leaveBtn.style.display = 'block';
+            } else {
+                joinBtn.style.display = 'block';
+                leaveBtn.style.display = 'none';
+            }
+        }
+
+        // Join group
+        document.getElementById('joinBtn').addEventListener('click', async function() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/study-groups/${currentGroupId}/join`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    isMember = true;
+                    updateJoinLeaveButtons();
+                    showNotification('Successfully joined the group!');
+                    loadGroupDetails(); // Refresh group details
+                } else {
+                    showNotification(data.message || 'Failed to join group');
+                }
+            } catch (error) {
+                showNotification('Failed to join group');
+            }
+        });
+
+        // Leave group
+        document.getElementById('leaveBtn').addEventListener('click', async function() {
+            if (confirm('Are you sure you want to leave this group?')) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/study-groups/${currentGroupId}/leave`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        },
+                        credentials: 'include'
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        isMember = false;
+                        updateJoinLeaveButtons();
+                        showNotification('Left the group successfully!');
+                        
+                        // Navigate back to study groups page after a short delay
+                        setTimeout(() => {
+                            window.location.href = 'study groups.html';
+                        }, 800);
+                    } else {
+                        showNotification(data.message || 'Failed to leave group');
+                    }
+                } catch (error) {
+                    showNotification('Failed to leave group');
+                }
+            }
+        });
+
+        // Send message (placeholder)
+        document.getElementById('sendBtn').addEventListener('click', function() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                const container = document.getElementById('messagesContainer');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                messageDiv.innerHTML = `
+                    <div class="message-sender">You</div>
+                    <div class="message-text">${message}</div>
+                    <div class="message-time">Just now</div>
+                `;
+                container.appendChild(messageDiv);
+                container.scrollTop = container.scrollHeight;
+                messageInput.value = '';
+                showNotification('Message sent!');
+            }
+        });
+
+        // Allow Enter key to send message
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('sendBtn').click();
+            }
+        });
+
+        // Load group details on page load
+        loadGroupDetails();
+    </script>
+</body>
+</html>
