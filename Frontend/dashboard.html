@@ -171,5 +171,98 @@
             </div>
         </main>
     </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <span>StudyForge Assistant</span>
+                <span class="chat-close" id="chat-close">&times;</span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">Hello! I'm your StudyForge assistant. How can I help you today?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('chatbot-toggle');
+            const chatWindow = document.getElementById('chat-window');
+            const closeButton = document.getElementById('chat-close');
+            const sendButton = document.getElementById('send-button');
+            const chatInput = document.getElementById('chat-input');
+            const chatMessages = document.getElementById('chat-messages');
+
+            // Toggle chat window
+            toggleButton.addEventListener('click', function() {
+                chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+            });
+
+            // Close chat window
+            closeButton.addEventListener('click', function() {
+                chatWindow.style.display = 'none';
+            });
+
+            // Send message
+            sendButton.addEventListener('click', function() {
+                sendMessage();
+            });
+
+            // Send on Enter key
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // Add user message
+                    addMessage(message, 'user');
+                    chatInput.value = '';
+
+                    // Simulate bot response
+                    setTimeout(() => {
+                        const response = getBotResponse(message);
+                        addMessage(response, 'bot');
+                    }, 1000);
+                }
+            }
+
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function getBotResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                    return 'Hi there! How can I assist you with your studies today?';
+                } else if (lowerMessage.includes('study') || lowerMessage.includes('learn')) {
+                    return 'Great! What subject are you studying? I can help with tips and resources.';
+                } else if (lowerMessage.includes('group') || lowerMessage.includes('study group')) {
+                    return 'Study groups are awesome! Check out the Study Groups section to join or create one.';
+                } else if (lowerMessage.includes('schedule')) {
+                    return 'You can manage your study schedule in the Schedule section. Stay organized!';
+                } else if (lowerMessage.includes('progress')) {
+                    return 'Track your progress in the Progress section. Keep up the good work!';
+                } else {
+                    return 'I\'m here to help with your study needs. Try asking about study groups, schedule, or progress!';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
